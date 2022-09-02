@@ -15,12 +15,19 @@ def random_predict(number: int = 1) -> int:
         int: Число попыток
     """
     count = 0
+    l_boundary = 1
+    r_boundary = 101
 
     while True:
         count += 1
         predict_number = np.random.randint(1, 101)  # предполагаемое число
+        predict_number = (r_boundary + l_boundary) // 2
         if number == predict_number:
             break  # выход из цикла если угадали
+        elif number < predict_number:
+            r_boundary = predict_number
+        else:
+            l_boundary = predict_number    
     return count
 
 
